@@ -16,7 +16,7 @@ instance/
 .env.*
 
 # MySQL dumps
-*.sql
+# *.sql
 
 # Log files
 *.log

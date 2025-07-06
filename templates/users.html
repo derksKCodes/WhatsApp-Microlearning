@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users - MicroLearn Coach{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Manage Users</h1>
+    <div>
+        <button class="btn btn-outline-primary me-2">
+            <i class="fas fa-download me-2"></i>Export Users
+        </button>
+        <button class="btn btn-primary">
+            <i class="fas fa-paper-plane me-2"></i>Send Message
+        </button>
+    </div>
+</div>
+
+<!-- Filter Options -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-select" id="subscriptionFilter">
+                    <option value="">All Subscriptions</option>
+                    <option value="free">Free</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="searchUsers" placeholder="Search users...">
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="dateFilter">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-secondary w-100" onclick="applyFilters()">
+                    <i class="fas fa-filter me-2"></i>Apply Filters
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>User</th>
+                        <th>Phone Number</th>
+                        <th>Subscription</th>
+                        <th>Progress</th>
+                        <th>Streak</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-primary rounded-circle d-flex align-items-center justify-content-center me-3">
+                                    <i class="fas fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-semibold">{{ user.name or 'Anonymous User' }}</div>
+                                    <div class="text-muted small">ID: {{ user.id }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="font-monospace">{{ user.phone_number }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-{{ 'success' if user.subscription_status != 'free' else 'secondary' }}">
+                                {{ user.subscription_status.title() }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                    <div class="progress-bar" style="width: {{ (user.total_lessons_completed / 50 * 100) if user.total_lessons_completed else 0 }}%"></div>
+                                </div>
+                                <small class="text-muted">{{ user.total_lessons_completed }}/50</small>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge bg-warning">
+                                <i class="fas fa-fire me-1"></i>{{ user.current_streak }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="text-muted">{{ user.created_at.strftime('%m/%d/%Y') }}</span>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="viewUser({{ user.id }})">
+                                        <i class="fas fa-eye me-2"></i>View Details
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="sendMessage({{ user.id }})">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="resetProgress({{ user.id }})">
+                                        <i class="fas fa-redo me-2"></i>Reset Progress
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="#" onclick="blockUser({{ user.id }})">
+                                        <i class="fas fa-ban me-2"></i>Block User
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Previous</a>
+        </li>
+        <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function applyFilters() {
+    const subscription = document.getElementById('subscriptionFilter').value;
+    const search = document.getElementById('searchUsers').value;
+    const date = document.getElementById('dateFilter').value;
+    
+    // Here you would implement the actual filtering logic
+    console.log('Applying filters:', { subscription, search, date });
+    alert('Filter functionality would be implemented here!');
+}
+
+function viewUser(userId) {
+    alert(`View user ${userId} details - feature coming soon!`);
+}
+
+function sendMessage(userId) {
+    const message = prompt('Enter message to send:');
+    if (message) {
+        alert(`Sending message to user ${userId}: ${message}`);
+    }
+}
+
+function resetProgress(userId) {
+    if (confirm('Are you sure you want to reset this user\'s progress?')) {
+        alert(`Reset progress for user ${userId} - feature coming soon!`);
+    }
+}
+
+function blockUser(userId) {
+    if (confirm('Are you sure you want to block this user?')) {
+        alert(`Block user ${userId} - feature coming soon!`);
+    }
+}
+
+// Search functionality
+document.getElementById('searchUsers').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const rows = document.querySelectorAll('tbody tr');
+    
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+</script>
+{% endblock %}
