@@ -149,6 +149,7 @@ Ensure you have the following installed on your system:
 * A Stripe account for payment processing.
 
 ### Project Structure
+```
 whatsapp-microlearning-coach/
 ├── scripts/                # Database setup scripts, utility scripts
 ├── templates/              # HTML templates for admin dashboard and landing page
@@ -159,7 +160,9 @@ whatsapp-microlearning-coach/
 ├── app.py                  # Main Flask application
 ├── config.py               # Application configuration
 ├── requirements.txt        # Python dependencies
-└── database_setup.sql      # SQL script for database schema
+└── README.md             # Project documentation
+
+```
 
 ---
 
