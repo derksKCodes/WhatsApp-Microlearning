@@ -4,6 +4,20 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+---
+
+## 🎯 About The Project
+
+The WhatsApp Microlearning Coach is a comprehensive system designed to deliver engaging, bite-sized educational content directly to users via WhatsApp. It combines the power of a Python Flask backend with a MySQL database, a web-based admin interface, and seamless WhatsApp integration through Twilio. This platform is ideal for automating educational content delivery, tracking user progress, and enabling flexible monetization.
+
+### Problem Solved
+Small businesses and individual educators often face challenges in delivering engaging, accessible, and trackable learning content. Traditional e-learning platforms can be expensive and complex. This system provides a low-barrier-to-entry solution for delivering structured micro-lessons directly to users' most used communication channel.
+
+### Solution
+A robust, scalable platform that automates lesson delivery, tracks user progress, manages subscriptions, and offers an intuitive admin interface, all accessible via WhatsApp. It empowers content creators to monetize their knowledge effectively through various subscription tiers and value-added features.
+
+---
+
 ## 📋 Table of Contents
 -   [🎯 About The Project](#-about-the-project)
     -   [Problem Solved](#problem-solved)
@@ -30,18 +44,6 @@
 -   [🤝 Contributing](#-contributing)
 -   [📄 License](#-license)
 -   [📞 Contact](#-contact)
-
----
-
-## 🎯 About The Project
-
-The WhatsApp Microlearning Coach is a comprehensive system designed to deliver engaging, bite-sized educational content directly to users via WhatsApp. It combines the power of a Python Flask backend with a MySQL database, a web-based admin interface, and seamless WhatsApp integration through Twilio. This platform is ideal for automating educational content delivery, tracking user progress, and enabling flexible monetization.
-
-### Problem Solved
-Small businesses and individual educators often face challenges in delivering engaging, accessible, and trackable learning content. Traditional e-learning platforms can be expensive and complex. This system provides a low-barrier-to-entry solution for delivering structured micro-lessons directly to users' most used communication channel.
-
-### Solution
-A robust, scalable platform that automates lesson delivery, tracks user progress, manages subscriptions, and offers an intuitive admin interface, all accessible via WhatsApp. It empowers content creators to monetize their knowledge effectively through various subscription tiers and value-added features.
 
 ---
 
