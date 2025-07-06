@@ -272,6 +272,6 @@ This project is licensed under the MIT License. See the `LICENSE` file in the re
 
 For any inquiries or support, please reach out via:
 * **Project Maintainer**: Derrick Karanja 
-* **GitHub**: [https://github.com/derksKCodes/whatsapp-microlearning-coach](https://github.com/derksKCodes/whatsapp-microlearning-coach)
+* **Portfolio**: [My portfolio](https://my-portfolio-project-dk-jr.vercel.app/)
 
 ---
