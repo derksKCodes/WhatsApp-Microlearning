@@ -1,0 +1,79 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+WhatsappVenv/
+venv/
+env/
+
+# Flask instance folder
+instance/
+
+# Environment variables
+.env
+.env.*
+
+# MySQL dumps
+*.sql
+
+# Log files
+*.log
+
+# VS Code settings
+.vscode/
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python egg metadata
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Unit test and Jupyter
+*.ipynb_checkpoints
+
+# Node modules (in case you add a frontend inside the repo later)
+node_modules/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Misc
+*.bak
+*.swp
+
+# IDEs
+.idea/
+*.iml
+
+# SQLite databases (if used temporarily)
+*.sqlite3
+
+# Static asset caches
+*.sass-cache
+*.cache
+
+# Twilio test recordings (if used)
+.twilio-test-recordings/
