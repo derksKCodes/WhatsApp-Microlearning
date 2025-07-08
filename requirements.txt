@@ -20,7 +20,7 @@ Jinja2==3.1.6
 MarkupSafe==3.0.2
 multidict==6.6.3
 mysql-connector-python==8.1.0
-Pillow==10.0.1
+Pillow==9.5.0
 propcache==0.3.2
 protobuf==4.21.12
 pycparser==2.22
