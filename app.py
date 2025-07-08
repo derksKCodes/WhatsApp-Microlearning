@@ -17,9 +17,8 @@ moment = Moment(app)
 # app.config['SECRET_KEY'] = 'your-secret-key-here'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@localhost/dbname'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///default.db').replace('postgres://', 'postgresql://')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 
 # Twilio Configuration (for WhatsApp)
