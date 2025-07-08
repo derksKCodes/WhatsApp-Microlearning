@@ -17,8 +17,8 @@ class Config:
     
     # SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DATABASE}"
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///default.db').replace('postgres://', 'postgresql://')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    SQLALCHEMY_DATABASE_URI= os.environ.get('DATABASE_URL', 'sqlite:///default.db').replace('postgres://', 'postgresql://')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Twilio Configuration (WhatsApp)
     TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
