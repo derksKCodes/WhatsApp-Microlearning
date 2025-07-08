@@ -12,6 +12,7 @@ colorama==0.4.6
 cryptography==41.0.4
 Flask==2.3.3
 Flask-SQLAlchemy==3.0.5
+Flask-Moment==1.0.6
 frozenlist==1.7.0
 greenlet==3.2.3
 idna==3.10
