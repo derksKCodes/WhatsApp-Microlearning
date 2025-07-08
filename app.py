@@ -17,14 +17,22 @@ moment = Moment(app)
 # app.config['SECRET_KEY'] = 'your-secret-key-here'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@localhost/dbname'
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config.from_object(Config)
+# app.config.from_object(Config)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///default.db').replace('postgres://', 'postgresql://')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 # Twilio Configuration (for WhatsApp)
 TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID', 'your_account_sid')
 TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN', 'your_auth_token')
 TWILIO_WHATSAPP_NUMBER = os.getenv('TWILIO_WHATSAPP_NUMBER', 'whatsapp:+14155238886')
 
-db = SQLAlchemy(app)
+@app.before_request
+def before_request():
+    try:
+        db.engine.connect()
+    except Exception as e:
+        return "Database connection failed", 500
 
 # Database Models
 class User(db.Model):
@@ -352,18 +360,21 @@ def webhook():
 
 @app.route('/admin')
 def admin_dashboard():
-    """Admin dashboard"""
-    users_count = User.query.count()
-    lessons_count = Lesson.query.count()
-    categories_count = Category.query.count()
-    
-    recent_users = User.query.order_by(User.created_at.desc()).limit(5).all()
-    
-    return render_template('admin.html', 
-                         users_count=users_count,
-                         lessons_count=lessons_count, 
-                         categories_count=categories_count,
-                         recent_users=recent_users)
+    try:
+        """Admin dashboard"""
+        users_count = User.query.count()
+        lessons_count = Lesson.query.count()
+        categories_count = Category.query.count()
+        
+        recent_users = User.query.order_by(User.created_at.desc()).limit(5).all()
+        
+        return render_template('admin.html', 
+                            users_count=users_count,
+                            lessons_count=lessons_count, 
+                            categories_count=categories_count,
+                            recent_users=recent_users)
+    except Exception as e:
+        return "Database error", 500
 
 @app.route('/admin/lessons')
 def admin_lessons():
