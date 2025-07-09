@@ -40,7 +40,7 @@ class User(db.Model):
     phone_number = db.Column(db.String(20), unique=True, nullable=False)
     name = db.Column(db.String(100))
     preferred_language = db.Column(db.String(10), default='en')
-    subscription_status = db.Column(db.Enum('free', 'daily', 'weekly', 'premium'), default='free')
+    subscription_status = db.Column(db.Enum('free', 'daily', 'weekly', 'premium', name='subscription_status'), default='free')
     subscription_start = db.Column(db.Date)
     subscription_end = db.Column(db.Date)
     current_streak = db.Column(db.Integer, default=0)
@@ -62,7 +62,7 @@ class Lesson(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    difficulty_level = db.Column(db.Enum('beginner', 'intermediate', 'advanced'), default='beginner')
+    difficulty_level = db.Column(db.Enum('beginner', 'intermediate', 'advanced', name='difficulty_level'), default='beginner')
     estimated_duration = db.Column(db.Integer, default=5)
     lesson_order = db.Column(db.Integer)
     media_url = db.Column(db.String(500))
@@ -87,7 +87,7 @@ class MessageLog(db.Model):
     __tablename__ = 'message_logs'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    message_type = db.Column(db.Enum('incoming', 'outgoing'))
+    message_type = db.Column(db.Enum('incoming', 'outgoing', name='message_type'))
     message_content = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
