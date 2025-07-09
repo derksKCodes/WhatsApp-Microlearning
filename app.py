@@ -360,7 +360,7 @@ def webhook():
 @app.route('/admin')
 def admin_dashboard():
     try:
-        """Admin dashboard"""
+        # Admin dashboard
         users_count = User.query.count()
         lessons_count = Lesson.query.count()
         categories_count = Category.query.count()

@@ -13,6 +13,7 @@ class Config:
     # MYSQL_PASSWORD = os.getenv('DB_PASSWORD')
     # MYSQL_DATABASE = os.getenv('DB_NAME')
     DATABASE_URL = os.getenv('DATABASE_POS_URL', 'sqlite:///default.db')
+    print("Database URL:", DATABASE_URL)  # for debugging
     
     
     # SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DATABASE}"
@@ -66,5 +67,3 @@ class Config:
         }
     }
 
-print("Config loaded successfully.")
-print(f"Database URL: {Config.DATABASE_URL}")
