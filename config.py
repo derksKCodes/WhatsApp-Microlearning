@@ -8,16 +8,16 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-change-in-production')
     
     # Database Configuration
-    MYSQL_HOST = os.getenv('DB_HOST' )
-    MYSQL_USER = os.getenv('DB_USER')
-    MYSQL_PASSWORD = os.getenv('DB_PASSWORD')
-    MYSQL_DATABASE = os.getenv('DB_NAME')
-    DATABASE_URL = os.getenv('DATABASE_POS_URL')
+    # MYSQL_HOST = os.getenv('DB_HOST' )
+    # MYSQL_USER = os.getenv('DB_USER')
+    # MYSQL_PASSWORD = os.getenv('DB_PASSWORD')
+    # MYSQL_DATABASE = os.getenv('DB_NAME')
+    DATABASE_URL = os.getenv('DATABASE_POS_URL', 'sqlite:///default.db')
     
     
     # SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DATABASE}"
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI= os.environ.get('DATABASE_URL', 'sqlite:///default.db').replace('postgres://', 'postgresql://')
+    SQLALCHEMY_DATABASE_URI= DATABASE_URL.replace('postgres://', 'postgresql://')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Twilio Configuration (WhatsApp)
