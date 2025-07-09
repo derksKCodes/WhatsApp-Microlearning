@@ -66,3 +66,5 @@ class Config:
         }
     }
 
+print("Config loaded successfully.")
+print(f"Database URL: {Config.DATABASE_URL}")
